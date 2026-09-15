@@ -1,16 +1,18 @@
 package primerTrimestre;
 
-import java.io.File;
+import java.io.File; // clase clásica para manejar ficheros
 import java.io.FilenameFilter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.nio.file.Files;
+
+import java.nio.file.Files;	// clase avanzada y mas moderna que amplia la funcionalidad de la anterior
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
+
 import java.util.Date;
 
 public class ClaseFich {
