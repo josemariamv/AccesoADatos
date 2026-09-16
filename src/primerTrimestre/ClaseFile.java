@@ -27,6 +27,7 @@ public class ClaseFile {
 		System.out.println("=== INICIO DE LA CLASE MAESTRA DE GESTIÓN DE ARCHIVOS ===\n");
 
 		try {
+			
 			// 1. GESTIÓN Y CREACIÓN DE DIRECTORIOS
 			gestionarDirectorios();
 
