@@ -8,7 +8,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import java.nio.file.Files;	// clase avanzada y mas moderna que amplia la funcionalidad de la anterior
+import java.nio.file.Files; // clase avanzada y mas moderna que amplia la funcionalidad de la anterior
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
@@ -19,8 +19,10 @@ public class ClaseFile {
 
 	// File.separator me permite hacer programas multiplataforma
 	private static final String DIRECTORIO_CONFIG = "DAM2";
-	// File.separator nos ayuda a hacer una aplicación multiplataforma obviando que necesitemos saber
-	// el separador de directorios que usa el sistema de archivos donde ejecutamos la app
+	// File.separator nos ayuda a hacer una aplicación multiplataforma obviando que
+	// necesitemos saber
+	// el separador de directorios que usa el sistema de archivos donde ejecutamos
+	// la app
 	private static final String SUBDIRECTORIO = DIRECTORIO_CONFIG + File.separator + "josemaria";
 	private static final String ARCHIVO_CONFIG = SUBDIRECTORIO + File.separator + "config.txt";
 	private static final String ARCHIVO_CONFIG_RENOMBRADO = SUBDIRECTORIO + File.separator + "config_backup.txt";
@@ -29,103 +31,55 @@ public class ClaseFile {
 
 		try {
 			String directorioTrabajo = new File(".").getAbsolutePath();
-	        System.out.println("El directorio actual es: " + directorioTrabajo);
-	        //File subDir = new File(DIRECTORIO_CONFIG);
-	        File subDir = new File(SUBDIRECTORIO);
-	       
-	        // mkdir() solo puede crear directorios simples
-	        // mkdirs() puede crear una estructura compleja con mas de un nivel de una sóla vez
-	        //if (subDir.mkdir()) {
+			System.out.println("El directorio actual es: " + directorioTrabajo);
+			// File subDir = new File(DIRECTORIO_CONFIG);
+			File subDir = new File(SUBDIRECTORIO);
+
+			// mkdir() solo puede crear directorios simples
+			// mkdirs() puede crear una estructura compleja con mas de un nivel de una sóla
+			// vez
+			// if (subDir.mkdir()) {
 			if (subDir.mkdirs())
 				System.out.println("Directorio creado con éxito");
 			else
 				System.out.println("Los directorios no pudieron crearse o ya existen");
-			
-			 if(subDir.exists()) {
-		        	System.out.println("El directorio existe");
-		        	FileWriter escritor = new FileWriter(ARCHIVO_CONFIG , true);
-		        	if(escritor==null)
-		        		System.out.println("No he podido crear el archivo de configuración");
-		        	else {
-		        		System.out.println("El archivo de configuración ya existía o ha sido creado");
-		        		escritor.close();
-		        	}
-			 }
-		        else
-		        	System.out.println("El directorio no existe");
-			
-			System.out.println("Espacio libre en esta partición del disco: " + new File(".").getFreeSpace() /1024 /1024 /1024 + " GB");
 
-		} catch (Exception e) {
+			if (subDir.exists()) {
+				System.out.println("El directorio existe");
+				/*
+				 * FileWriter escritor = new FileWriter(ARCHIVO_CONFIG, true); if (escritor ==
+				 * null) System.out.println("No he podido crear el archivo de configuración");
+				 * else {
+				 * System.out.println("El archivo de configuración ya existía o ha sido creado"
+				 * ); escritor.close(); }
+				 */
+				// también puedo crearlo así:
+				File archivo = new File(ARCHIVO_CONFIG);
+				
+				if (archivo.createNewFile())
+					System.out.println("Archivo de confguración creado");
+				else
+					System.out.println("El archivo ya existe o no puedo crearlo");
+			} else
+				System.out.println("El directorio no existe");
+			
+			// ver el espacio libre en disco
+			System.out.println("Espacio libre en esta partición del disco en Gigas: " + new File(".").getFreeSpace() / 1024 / 1024 / 1024 + " GB");
+			
+			// ver las propiedades de un archivo:
+			File archivo = new File("/home/josemaria/Documentos/Equal-Earth-Map-0-ES.jpg");
+			System.out.println("Nombre: " + archivo.getName());
+			System.out.println("Nombre y ruta: " + archivo.getAbsolutePath());
+			System.out.println("¿Es un archivo de datos?: " + archivo.isFile());
+			System.out.println("¿Es un directorio?: " + archivo.isDirectory());
+			System.out.println("¿Está oculto?: " + archivo.isHidden());
+			System.out.println("Tamaño actual (en bytes): " + archivo.length());
+			System.out.println("Última modificación: " + new Date(archivo.lastModified()));
+
+		} catch (IOException e) {
 			System.err.println("Ocurrió un error grave en el sistema de archivos: " + e.getMessage());
 			e.printStackTrace();
 		}
-	}
-
-	private static File gestionarMetadatosArchivo() throws IOException {
-		System.out.println("--- 2. Creación y Metadatos del Archivo ---");
-		File archivo = new File(ARCHIVO_TEXTO);
-
-		// createNewFile() crea el archivo físico solo si no existe previamente
-		if (archivo.createNewFile()) {
-			System.out.println("[OK] Archivo físico creado en el disco: " + ARCHIVO_TEXTO);
-		} else {
-			System.out.println("[INFO] El archivo ya existe. Trabajaremos sobre el actual.");
-		}
-
-		// Análisis completo de propiedades (Inspección técnica)
-		System.out.println("Nombre del archivo: " + archivo.getName());
-		System.out.println("Ruta absoluta: " + archivo.getAbsolutePath());
-		System.out.println("¿Es un archivo de datos?: " + archivo.isFile());
-		System.out.println("¿Es un directorio/carpeta?: " + archivo.isDirectory());
-		System.out.println("¿Está oculto en el sistema?: " + archivo.isHidden());
-		System.out.println("Tamaño actual en bytes: " + archivo.length());
-		System.out.println("Última modificación: " + new Date(archivo.lastModified()));
-		System.out.println("Espacio libre en esta partición de disco: " + (archivo.getFreeSpace() / 1024 / 1024 / 1024) + " GB");
-		System.out.println();
-
-		return archivo;
-	}
-
-	/**
-	 * Escritura de texto utilizando un BufferedWriter acoplado a un FileWriter.
-	 * Incluye el parámetro 'append' para no borrar lo que ya existía.
-	 */
-	private static void escribirContenido(File archivo) throws IOException {
-		System.out.println("--- 3. Escritura Eficiente (Buffer) ---");
-
-		// El segundo parámetro 'true' activa el modo APPEND (añadir al final sin
-		// sobrescribir)
-		try (BufferedWriter escritor = new BufferedWriter(new FileWriter(archivo, true))) {
-			escritor.write("Línea 1: Bienvenidos a la clase avanzada de archivos.\n");
-			escritor.write("Línea 2: Java gestiona streams eficientemente.\n");
-			escritor.newLine(); // Método nativo para saltar de línea según el Sistema Operativo
-			escritor.write("Línea 3: Registro añadido el: " + new Date() + "\n");
-
-			System.out.println("[OK] Datos escritos correctamente dentro del archivo.");
-		} // El try-with-resources cierra automáticamente el buffer y libera el archivo
-			// del sistema
-		System.out.println();
-	}
-
-	/**
-	 * Lectura de archivos a alta velocidad línea por línea, evitando saturar la
-	 * memoria RAM.
-	 */
-	private static void leyendoContenido(File archivo) throws IOException {
-		System.out.println("--- 4. Lectura Eficiente (Línea por Línea) ---");
-
-		try (BufferedReader lector = new BufferedReader(new FileReader(archivo))) {
-			String linea;
-			int contadorLineas = 1;
-
-			System.out.println(">> Contenido del archivo impreso en consola:");
-			while ((linea = lector.readLine()) != null) {
-				System.out.println("   [Fila " + contadorLineas + "]: " + linea);
-				contadorLineas++;
-			}
-		}
-		System.out.println();
 	}
 
 	/**
