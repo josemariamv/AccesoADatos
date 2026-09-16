@@ -18,75 +18,50 @@ import java.util.Date;
 public class ClaseFile {
 
 	// File.separator me permite hacer programas multiplataforma
-	private static final String CARPETA_RAIZ = "DirectorioMaster";
-	private static final String SUB_CARPETA = CARPETA_RAIZ + File.separator + "SubDirectorio";
-	private static final String ARCHIVO_TEXTO = SUB_CARPETA + File.separator + "ejemplo_avanzado.txt";
-	private static final String ARCHIVO_RENOMBRADO = SUB_CARPETA + File.separator + "ejemplo_FINAL.txt";
+	private static final String DIRECTORIO_CONFIG = "DAM2";
+	// File.separator nos ayuda a hacer una aplicación multiplataforma obviando que necesitemos saber
+	// el separador de directorios que usa el sistema de archivos donde ejecutamos la app
+	private static final String SUBDIRECTORIO = DIRECTORIO_CONFIG + File.separator + "josemaria";
+	private static final String ARCHIVO_CONFIG = SUBDIRECTORIO + File.separator + "config.txt";
+	private static final String ARCHIVO_CONFIG_RENOMBRADO = SUBDIRECTORIO + File.separator + "config_backup.txt";
 
 	public static void main(String[] args) {
-		System.out.println("=== INICIO DE LA CLASE MAESTRA DE GESTIÓN DE ARCHIVOS ===\n");
 
 		try {
+			String directorioTrabajo = new File(".").getAbsolutePath();
+	        System.out.println("El directorio actual es: " + directorioTrabajo);
+	        //File subDir = new File(DIRECTORIO_CONFIG);
+	        File subDir = new File(SUBDIRECTORIO);
+	       
+	        // mkdir() solo puede crear directorios simples
+	        // mkdirs() puede crear una estructura compleja con mas de un nivel de una sóla vez
+	        //if (subDir.mkdir()) {
+			if (subDir.mkdirs())
+				System.out.println("Directorio creado con éxito");
+			else
+				System.out.println("Los directorios no pudieron crearse o ya existen");
 			
-			// 1. GESTIÓN Y CREACIÓN DE DIRECTORIOS
-			gestionarDirectorios();
+			 if(subDir.exists()) {
+		        	System.out.println("El directorio existe");
+		        	FileWriter escritor = new FileWriter(ARCHIVO_CONFIG , true);
+		        	if(escritor==null)
+		        		System.out.println("No he podido crear el archivo de configuración");
+		        	else {
+		        		System.out.println("El archivo de configuración ya existía o ha sido creado");
+		        		escritor.close();
+		        	}
+			 }
+		        else
+		        	System.out.println("El directorio no existe");
+			
+			System.out.println("Espacio libre en esta partición del disco: " + new File(".").getFreeSpace() /1024 /1024 /1024 + " GB");
 
-			// 2. CREACIÓN Y METADATOS AVANZADOS DE UN ARCHIVO
-			File archivo = gestionarMetadatosArchivo();
-
-			// 3. ESCRITURA AVANZADA (Buffer y Append)
-			//escribirContenido(archivo);
-
-			// 4. LECTURA AVANZADA (Línea por línea con BufferedReader)
-			//leyendoContenido(archivo);
-
-			// 5. SEGURIDAD Y PERMISOS
-			modificarPermisos(archivo);
-
-			// 6. FILTRADO Y LISTADO DE ARCHIVOS (Uso de Clases Anónimas / Lambdas)
-			listarYFiltrarArchivos();
-
-			// 7. OPERACIONES MODERNAS CON JAVA NIO (Renombrado y Atributos del Sistema)
-			operacionesModernasNIO();
-
-			// 8. LIMPIEZA DEL SISTEMA (Borrado recursivo seguro)
-			// Descomenta la siguiente línea si deseas borrar todo al finalizar la prueba:
-			// limpiarTodo();
-
-		} catch (IOException e) {
+		} catch (Exception e) {
 			System.err.println("Ocurrió un error grave en el sistema de archivos: " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
 
-	/**
-	 * Demuestra cómo crear directorios individuales o estructuras anidadas
-	 * complejas.
-	 */
-	private static void gestionarDirectorios() {
-		System.out.println("--- 1. Gestión de Directorios ---");
-		File dirRaiz = new File(CARPETA_RAIZ);
-		File subDir = new File(SUB_CARPETA);
-		
-		String directorioTrabajo = new File(".").getAbsolutePath();
-        System.out.println("El directorio actual es: " + directorioTrabajo);
-        System.out.println("Espacio libre en esta partición de disco: " + (new File(".").getFreeSpace() / 1024 / 1024 / 1024) + " GB");
-
-		// mkdir() provoca una excepción si las carpetas intermedias no existen. 
-		// mkdirs() crea toda la ruta.
-		//if (subDir.mkdir()) {
-		if (subDir.mkdirs()) {
-			System.out.println("[OK] Estructura de directorios creada con éxito: " + SUB_CARPETA);
-		} else {
-			System.out.println("[INFO] Los directorios ya existían o no pudieron crearse.");
-		}
-		System.out.println("¿Existe carpeta raíz?: " + dirRaiz.exists());
-		System.out.println();
-	}
-
-	/**
-	 * Muestra cómo inspeccionar cada propiedad física del archivo en el disco duro.
-	 */
 	private static File gestionarMetadatosArchivo() throws IOException {
 		System.out.println("--- 2. Creación y Metadatos del Archivo ---");
 		File archivo = new File(ARCHIVO_TEXTO);
