@@ -15,8 +15,9 @@ import java.nio.file.attribute.BasicFileAttributes;
 
 import java.util.Date;
 
-public class ClaseFich {
+public class ClaseFile {
 
+	// File.separator me permite hacer programas multiplataforma
 	private static final String CARPETA_RAIZ = "DirectorioMaster";
 	private static final String SUB_CARPETA = CARPETA_RAIZ + File.separator + "SubDirectorio";
 	private static final String ARCHIVO_TEXTO = SUB_CARPETA + File.separator + "ejemplo_avanzado.txt";
@@ -33,10 +34,10 @@ public class ClaseFich {
 			File archivo = gestionarMetadatosArchivo();
 
 			// 3. ESCRITURA AVANZADA (Buffer y Append)
-			escribirContenido(archivo);
+			//escribirContenido(archivo);
 
 			// 4. LECTURA AVANZADA (Línea por línea con BufferedReader)
-			leyendoContenido(archivo);
+			//leyendoContenido(archivo);
 
 			// 5. SEGURIDAD Y PERMISOS
 			modificarPermisos(archivo);
@@ -65,9 +66,14 @@ public class ClaseFich {
 		System.out.println("--- 1. Gestión de Directorios ---");
 		File dirRaiz = new File(CARPETA_RAIZ);
 		File subDir = new File(SUB_CARPETA);
+		
+		String directorioTrabajo = new File(".").getAbsolutePath();
+        System.out.println("El directorio actual es: " + directorioTrabajo);
+        System.out.println("Espacio libre en esta partición de disco: " + (new File(".").getFreeSpace() / 1024 / 1024 / 1024) + " GB");
 
-		// mkdir() falla si las carpetas intermedias no existen. mkdirs() crea toda la
-		// ruta.
+		// mkdir() provoca una excepción si las carpetas intermedias no existen. 
+		// mkdirs() crea toda la ruta.
+		//if (subDir.mkdir()) {
 		if (subDir.mkdirs()) {
 			System.out.println("[OK] Estructura de directorios creada con éxito: " + SUB_CARPETA);
 		} else {
@@ -99,8 +105,7 @@ public class ClaseFich {
 		System.out.println("¿Está oculto en el sistema?: " + archivo.isHidden());
 		System.out.println("Tamaño actual en bytes: " + archivo.length());
 		System.out.println("Última modificación: " + new Date(archivo.lastModified()));
-		System.out.println(
-				"Espacio libre en esta partición de disco: " + (archivo.getFreeSpace() / 1024 / 1024 / 1024) + " GB");
+		System.out.println("Espacio libre en esta partición de disco: " + (archivo.getFreeSpace() / 1024 / 1024 / 1024) + " GB");
 		System.out.println();
 
 		return archivo;
