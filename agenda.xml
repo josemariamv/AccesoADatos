@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<agenda>
+        
+    <contacto>
+                
+        <nombre>Juan Perez</nombre>
+                
+        <telefono>600111222</telefono>
+            
+    </contacto>
+        
+    <contacto>
+                
+        <nombre>Maria Lopez</nombre>
+                
+        <telefono>600333444</telefono>
+            
+    </contacto>
+        
+    <contacto>
+                
+        <nombre>Pepe Pótamo</nombre>
+                
+        <telefono>655311052</telefono>
+            
+    </contacto>
+    
+    <contacto>
+        <nombre>José María Morales</nombre>
+        <telefono>1112233</telefono>
+    </contacto>
+</agenda>
