@@ -1,6 +1,8 @@
 package primerTrimestre;
 
+// API DOM estándar
 import org.w3c.dom.*;
+// Clases adicionales necesarias
 import javax.xml.parsers.*;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
@@ -19,13 +21,15 @@ public class AgendaXML {
 //        System.out.println("--- Agenda actual ---");
         leerAgenda();
 
-        System.out.println("\n\nAñadimos un nuevo contacto:");
+/*        System.out.println("\n\nAñadimos un nuevo contacto:");
         System.out.print("Nombre: ");
         String nombre = sc.nextLine();
         System.out.print("Telefono: ");
         String telefono = sc.nextLine();
 
-        escribirContacto(nombre, telefono);
+        escribirContacto(nombre, telefono); */
+        //modificarTelefono("Elena", "1111111");
+        eliminarContacto("Elena");
 
         System.out.println("\n\nVolvemos a leer la agenda:");
         leerAgenda();
@@ -88,6 +92,72 @@ public class AgendaXML {
         raiz.appendChild(nuevoContacto);
 
         // Guardamos los  cambios en el fichero
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+
+        DOMSource source = new DOMSource(doc);
+        StreamResult result = new StreamResult(fichero);
+        transformer.transform(source, result);
+    }
+    
+ // Elimina un contacto de la agenda buscando por nombre
+    public static boolean eliminarContacto(String nombre) throws Exception {
+        File fichero = new File(FICHERO);
+
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document doc = builder.parse(fichero);
+        //doc.getDocumentElement().normalize();
+
+        Element raiz = doc.getDocumentElement();
+        NodeList listaContactos = doc.getElementsByTagName("contacto");
+
+        for (int i = 0; i < listaContactos.getLength(); i++) {
+            Element contacto = (Element) listaContactos.item(i);
+            String nombreActual = contacto.getElementsByTagName("nombre")
+                                           .item(0).getTextContent();
+
+            if (nombreActual.equalsIgnoreCase(nombre)) {
+                raiz.removeChild(contacto);
+                guardarCambios(doc, fichero);
+                return true; // eliminado
+            }
+        }
+
+        return false; // no encontrado
+    }
+
+    // Modifica el telefono de un contacto buscando por nombre
+    public static boolean modificarTelefono(String nombre, String nuevoTelefono) throws Exception {
+        File fichero = new File(FICHERO);
+
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document doc = builder.parse(fichero);
+        doc.getDocumentElement().normalize();
+
+        NodeList listaContactos = doc.getElementsByTagName("contacto");
+
+        for (int i = 0; i < listaContactos.getLength(); i++) {
+            Element contacto = (Element) listaContactos.item(i);
+            String nombreActual = contacto.getElementsByTagName("nombre")
+                                           .item(0).getTextContent();
+
+            if (nombreActual.equalsIgnoreCase(nombre)) {
+                Element telefonoElem = (Element) contacto.getElementsByTagName("telefono").item(0);
+                telefonoElem.setTextContent(nuevoTelefono);
+                guardarCambios(doc, fichero);
+                return true; // modificado
+            }
+        }
+
+        return false; // no encontrado
+    }
+
+    // Metodo auxiliar para guardar el documento en disco (evita repetir codigo)
+    private static void guardarCambios(Document doc, File fichero) throws Exception {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
