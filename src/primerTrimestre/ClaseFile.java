@@ -109,7 +109,7 @@ public class ClaseFile {
 	 */
 	private static void listarYFiltrarArchivos() {
 		System.out.println("\n--- 6. Listado y Filtros Avanzados (FilenameFilter) ---");
-		File carpeta = new File(SUB_CARPETA);
+		File carpeta = new File(SUBDIRECTORIO);
 
 		// Creamos un filtro para buscar únicamente archivos que terminen en ".txt"
 		FilenameFilter filtroTxt = new FilenameFilter() {
@@ -122,7 +122,7 @@ public class ClaseFile {
 		String[] listaFiltrada = carpeta.list(filtroTxt);
 
 		if (listaFiltrada != null && listaFiltrada.length > 0) {
-			System.out.println("Archivos '.txt' encontrados en " + SUB_CARPETA + ":");
+			System.out.println("Archivos '.txt' encontrados en " + SUBDIRECTORIO + ":");
 			for (String nombreArchivo : listaFiltrada) {
 				System.out.println(" -> " + nombreArchivo);
 			}
@@ -139,8 +139,8 @@ public class ClaseFile {
 	private static void operacionesModernasNIO() throws IOException {
 		System.out.println("--- 7. Operaciones de Vanguardia con Java NIO.2 ---");
 
-		Path origen = Paths.get(ARCHIVO_TEXTO);
-		Path destino = Paths.get(ARCHIVO_RENOMBRADO);
+		Path origen = Paths.get(ARCHIVO_CONFIG);
+		Path destino = Paths.get(ARCHIVO_CONFIG_RENOMBRADO);
 
 		if (Files.exists(origen)) {
 			// Renombrar o mover el archivo de forma atómica en el disco duro
@@ -161,9 +161,9 @@ public class ClaseFile {
 	 */
 	private static void limpiarTodo() {
 		System.out.println("--- 8. Borrado Seguro y Recursivo ---");
-		File archivoAElminar = new File(ARCHIVO_RENOMBRADO);
-		File subCarpeta = new File(SUB_CARPETA);
-		File carpetaRaiz = new File(CARPETA_RAIZ);
+		File archivoAElminar = new File(ARCHIVO_CONFIG_RENOMBRADO);
+		File subCarpeta = new File(SUBDIRECTORIO);
+		File carpetaRaiz = new File(DIRECTORIO_CONFIG);
 
 		// 1º Borrar el archivo interno
 		if (archivoAElminar.delete())
