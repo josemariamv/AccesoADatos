@@ -30,7 +30,6 @@ public class AgendaXML {
         
         System.out.println("\n\nVolvemos a leer la agenda:");
         leerAgenda("agenda.xml");
-
     }
     
     // Lee y muestra todos los contactos del XML
