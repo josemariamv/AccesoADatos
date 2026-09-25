@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <agenda>
-                                                        
+                                                            
+    
     
     
     
@@ -14,7 +15,8 @@
     
     
     <contacto>
-                                                                                                                
+                                                                                                                        
+        
         
         
         
@@ -28,7 +30,8 @@
         
         
         <nombre>Juan Perez</nombre>
-                                                                                                                
+                                                                                                                        
+        
         
         
         
@@ -42,7 +45,8 @@
         
         
         <telefono>600111222</telefono>
-                                                                                                            
+                                                                                                                    
+    
     
     
     
@@ -56,7 +60,8 @@
     
     
     </contacto>
-                                                        
+                                                            
+    
     
     
     
@@ -70,7 +75,8 @@
     
     
     <contacto>
-                                                                                                                
+                                                                                                                        
+        
         
         
         
@@ -84,7 +90,8 @@
         
         
         <nombre>Maria Lopez</nombre>
-                                                                                                                
+                                                                                                                        
+        
         
         
         
@@ -98,7 +105,68 @@
         
         
         <telefono>600333444</telefono>
-                                                                                                            
+                                                                                                                    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </contacto>
+                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <contacto>
+                                                                                                                        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <nombre>Pepe Pótamo</nombre>
+                                                                                                                        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <telefono>655311052</telefono>
+                                                                                                                    
+    
     
     
     
@@ -125,6 +193,7 @@
     
     
     
+    
     <contacto>
                                                                                                                 
         
@@ -139,7 +208,7 @@
         
         
         
-        <nombre>Pepe Pótamo</nombre>
+        <nombre>José María Morales</nombre>
                                                                                                                 
         
         
@@ -153,7 +222,7 @@
         
         
         
-        <telefono>655311052</telefono>
+        <telefono>1112233</telefono>
                                                                                                             
     
     
@@ -174,59 +243,6 @@
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    <contacto>
-                                                                                                        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        <nombre>José María Morales</nombre>
-                                                                                                        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        <telefono>1112233</telefono>
-                                                                                                    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    </contacto>
-                                                
-    
-    
-    
-    
-    
                 
     
 
@@ -239,19 +255,48 @@
     
     
     
+    
+    <contacto>
+                                                        
+        
+        
+        
+        
+        
+        <nombre>Leonor</nombre>
+                                                        
+        
+        
+        
+        
+        
+        <telefono>666554433</telefono>
+                                                    
+    
+    
+    
+    
+    
+    </contacto>
+                        
+    
+    
+    
+    
+    
     <contacto>
                                                 
         
         
         
         
-        <nombre>Leonor</nombre>
+        <nombre>Sofía</nombre>
                                                 
         
         
         
         
-        <telefono>666554433</telefono>
+        <telefono>111222333</telefono>
                                             
     
     
@@ -259,27 +304,7 @@
     
     </contacto>
                     
-    
-    
-    
-    
-    <contacto>
-                                        
-        
-        
-        
-        <nombre>Sofía</nombre>
-                                        
-        
-        
-        
-        <telefono>111222333</telefono>
-                                    
-    
-    
-    
-    </contacto>
-                
+
 
 
 
