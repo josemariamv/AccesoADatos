@@ -1,6 +1,6 @@
 package primerTrimestre;
 
-public class MangaJSON {
+public class AgendaJSON {
 	public static void main(String[] args) {
 
 	}
