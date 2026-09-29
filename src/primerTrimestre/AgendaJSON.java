@@ -1,6 +1,7 @@
 package primerTrimestre;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.FileReader;
@@ -44,10 +45,9 @@ public class AgendaJSON {
 	private static void guardarAgenda(String rutaArchivo, List<Contacto> contactos) {
 		Agenda agenda = new Agenda();
 		agenda.contactos = contactos;
-
-		Gson gson = new Gson();
-		// setPrettyPrinting() hace que el JSON se guarde bien indentado y legible
-		// Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		//Gson gson = new Gson();
+		// Mejor así para que el JSON se guarde bien indentado y legible
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		try (Writer escritor = new FileWriter(rutaArchivo)) {
 			// graba físicamente el json en el archivo físico
 			gson.toJson(agenda, escritor);
