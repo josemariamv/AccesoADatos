@@ -22,11 +22,6 @@ public class AgendaJSON {
 	}
 
 	public static List<Contacto> cargarAgenda(String rutaArchivo) {
-		// El año pasado trabajamos mas con ArrayList que es mas completa que List
-		// Gson trabaja con List, pero si nos sentimos mas cómodos podemos seguir usando
-		// a nuestra amiga:
-		// ArrayList<Contacto> contactos = (ArrayList)agenda.contactos;
-		// Para lo que vamos a hacer no vamos a encontrar diferencia
 		List<Contacto> contactos = null;
 		try (Reader lector = new FileReader(rutaArchivo)) {
 			Gson gson = new Gson();
@@ -121,6 +116,11 @@ public class AgendaJSON {
 	 */
 	private static class Agenda {
 		@SerializedName("agenda")
+		// El año pasado trabajamos mas con ArrayList que es mas completa que List
+		// Gson trabaja con List, pero si nos sentimos mas cómodos podemos seguir usando
+		// a nuestra amiga:
+		// ArrayList<Contacto> contactos = (ArrayList)agenda.contactos;
+		// Para lo que vamos a hacer no vamos a encontrar diferencia
 		List<Contacto> contactos;
 	}
 
