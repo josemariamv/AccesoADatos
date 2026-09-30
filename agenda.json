@@ -2,27 +2,18 @@
   "agenda": [
     {
       "nombre": "Juan Perez",
-      "telefono": "600111222"
+      "telefono": "600111222",
+      "dni": "28777666X"
     },
     {
       "nombre": "Maria Lopez",
-      "telefono": "600333444"
+      "telefono": "600333444",
+      "dni": "77766644B"
     },
     {
       "nombre": "Pepe Pótamo",
-      "telefono": "655311052"
-    },
-    {
-      "nombre": "José María Morales",
-      "telefono": "1112233"
-    },
-    {
-      "nombre": "Leonor",
-      "telefono": "888777666"
-    },
-    {
-      "nombre": "Sofía",
-      "telefono": "111222333"
+      "telefono": "655311052",
+      "dni": "44666555R"
     }
   ]
 }

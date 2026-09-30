@@ -15,7 +15,7 @@ public class AgendaJSON {
 	public static void main(String[] args) {
 		String rutaArchivo = "agenda.json";
 		leerAgenda(rutaArchivo);
-		Contacto contacto = new Contacto("Maripili", "999888777");
+		Contacto contacto = new Contacto("Maripili", "999888777", "11223344G");
 		crearContacto(rutaArchivo, contacto);
 		borrarContacto(rutaArchivo, "Maripili");
 		modificarTelefono(rutaArchivo, "Leonor", "888777666");
@@ -28,7 +28,7 @@ public class AgendaJSON {
 			// Gson convierte el JSON directamente en un objeto Agenda
 			Agenda agenda = gson.fromJson(lector, Agenda.class);
 			// Y de esta forma creamos una lista de contactos
-			contactos = agenda.contactos;
+			contactos = agenda.getContactos();
 		} catch (Exception e) {
 			System.err.println("Error al leer el archivo: " + e.getMessage());
 		}
@@ -39,7 +39,7 @@ public class AgendaJSON {
 
 	private static void guardarAgenda(String rutaArchivo, List<Contacto> contactos) {
 		Agenda agenda = new Agenda();
-		agenda.contactos = contactos;
+		agenda.setContactos(contactos);
 		//Gson gson = new Gson();
 		// Mejor así para que el JSON se guarde bien indentado y legible
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -54,7 +54,7 @@ public class AgendaJSON {
 	public static Contacto buscarContacto(List<Contacto> contactos, String nombreBuscado) {
         Contacto contacto = null;
         for (Contacto c : contactos)
-            if (c.nombre.equalsIgnoreCase(nombreBuscado))
+            if (c.getNombre().equalsIgnoreCase(nombreBuscado))
                 contacto = c;
         // si el contacto no existe va a devolver un null
         return contacto;
@@ -67,14 +67,14 @@ public class AgendaJSON {
 			// el método size me da el número de contactos de la lista
 			System.out.println("Total de contactos: " + contactos.size());
 			for (Contacto c : contactos)
-				System.out.println(c.nombre + ": " + c.telefono);
+				System.out.println(c);
 		} 
 	}
 
 	public static void crearContacto(String rutaArchivo, Contacto contacto) {
 		List<Contacto> contactos = cargarAgenda(rutaArchivo);
 		if (contactos != null)
-			if(buscarContacto(contactos,contacto.nombre) == null){
+			if(buscarContacto(contactos,contacto.getNombre()) == null){
 				contactos.add(contacto);
 				guardarAgenda(rutaArchivo, contactos);
 				System.out.println("Contacto creado");
@@ -87,7 +87,7 @@ public class AgendaJSON {
 		List<Contacto> contactos = cargarAgenda(rutaArchivo);
 		Contacto encontrado = buscarContacto(contactos,nombreBuscado);
         if (encontrado!=null){
-        	encontrado.telefono = nuevoTelefono;
+        	encontrado.setTelefono(nuevoTelefono);
             guardarAgenda(rutaArchivo, contactos);
             System.out.println("Teléfono actualizado");
         }
@@ -106,36 +106,6 @@ public class AgendaJSON {
 			}
 			else
 				System.out.println("No existe ese contacto");
-		}
-	}
-
-	/*
-	 * Necesitamos una clase que represente el raiz de nuestro JSON Con la anotación
-	 * SerializedName le decimos el elemento raíz que tiene que buscar en nuestro
-	 * JSON
-	 */
-	private static class Agenda {
-		@SerializedName("agenda")
-		// El año pasado trabajamos mas con ArrayList que es mas completa que List
-		// Gson trabaja con List, pero si nos sentimos mas cómodos podemos seguir usando
-		// a nuestra amiga:
-		// ArrayList<Contacto> contactos = (ArrayList)agenda.contactos;
-		// Para lo que vamos a hacer no vamos a encontrar diferencia
-		List<Contacto> contactos;
-	}
-
-	/*
-	 * Y luego necesitamos una segunda clase que represente los hijos del JSON Los
-	 * nombres de los elementos del JSON deben de coincidir con los atributos de la
-	 * clase de esta forma Gson los asigna de forma automática
-	 */
-	private static class Contacto {
-		private String nombre;
-		private String telefono;
-
-		public Contacto(String n, String t) {
-			this.nombre = n;
-			this.telefono = t;
 		}
 	}
 }
