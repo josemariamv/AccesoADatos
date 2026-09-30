@@ -27,7 +27,7 @@ public class AgendaJSON {
 			Gson gson = new Gson();
 			// Gson convierte el JSON directamente en un objeto Agenda
 			Agenda agenda = gson.fromJson(lector, Agenda.class);
-			// Y de esta forma creamos una lista de contactos
+			// Y de esta forma obtenemos una lista de contactos
 			contactos = agenda.getContactos();
 		} catch (Exception e) {
 			System.err.println("Error al leer el archivo: " + e.getMessage());
