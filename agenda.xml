@@ -1,18 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <agenda>
+<<<<<<< HEAD
             
+=======
+                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+>>>>>>> branch 'master' of https://github.com/josemariamv/AccesoADatos.git
     
     <contacto>
+<<<<<<< HEAD
                         
+=======
+                                                                                                                        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+>>>>>>> branch 'master' of https://github.com/josemariamv/AccesoADatos.git
         
         <nombre>Juan Perez</nombre>
-                                                        
+                                                                                                                        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
         
         
         <telefono>600111222</telefono>
+<<<<<<< HEAD
                                                     
 
         
@@ -29,36 +70,218 @@
         
         <telefono>600111222</telefono>
                                                                     
+=======
+                                                                                                                    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+>>>>>>> branch 'master' of https://github.com/josemariamv/AccesoADatos.git
     
     
     
     
     </contacto>
+<<<<<<< HEAD
             
+=======
+                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+>>>>>>> branch 'master' of https://github.com/josemariamv/AccesoADatos.git
     
     <contacto>
-                                                        
+                                                                                                                        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
         
         
         <nombre>Maria Lopez</nombre>
-                                                        
+                                                                                                                        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
         
         
         <telefono>600333444</telefono>
-                                                    
+                                                                                                                    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
     
     
     </contacto>
-                            
+                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <contacto>
+                                                                                                                        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <nombre>Pepe Pótamo</nombre>
+                                                                                                                        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <telefono>655311052</telefono>
+                                                                                                                    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </contacto>
+                                                        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <contacto>
+                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <nombre>José María Morales</nombre>
+                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <telefono>1112233</telefono>
+                                                                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </contacto>
+                                                    
+    
+    
+    
+    
+    
+                
+    
+
+
+
+
+
+    
     
     
     
@@ -71,14 +294,14 @@
         
         
         
-        <nombre>Pepe Pótamo</nombre>
+        <nombre>Leonor</nombre>
                                                         
         
         
         
         
         
-        <telefono>655311052</telefono>
+        <telefono>666554433</telefono>
                                                     
     
     
@@ -98,13 +321,13 @@
         
         
         
-        <nombre>José María Morales</nombre>
+        <nombre>Sofía</nombre>
                                                 
         
         
         
         
-        <telefono>1112233</telefono>
+        <telefono>111222333</telefono>
                                             
     
     
@@ -112,6 +335,7 @@
     
     </contacto>
                     
+<<<<<<< HEAD
     
 
     
@@ -248,6 +472,8 @@
     
     </contacto>
                         
+=======
+>>>>>>> branch 'master' of https://github.com/josemariamv/AccesoADatos.git
 
 
 
