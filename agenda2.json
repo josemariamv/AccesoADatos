@@ -1,0 +1,19 @@
+{
+  "agenda": [
+    {
+      "nombre": "Juan Perez",
+      "telefonos": ["600111222", "630518422"],
+      "dni": "28777666X"
+    },
+    {
+      "nombre": "Maria Lopez",
+      "telefonos": ["600333444"],
+      "dni": "77766644B"
+    },
+	{
+	  "nombre": "Benito Pérez",
+	  "telefonos": ["600333444", "644661177", "770212270"],
+	  "dni": "77766644B"
+	}
+  ]
+}

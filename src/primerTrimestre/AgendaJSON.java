@@ -25,7 +25,7 @@ public class AgendaJSON {
 		List<Contacto> contactos = null;
 		try (Reader lector = new FileReader(rutaArchivo)) {
 			Gson gson = new Gson();
-			// Gson convierte el JSON directamente en un objeto Agenda
+			// Gson convierte el JSON directamente en un objeto AgendaDup
 			Agenda agenda = gson.fromJson(lector, Agenda.class);
 			// Y de esta forma obtenemos una lista de contactos
 			contactos = agenda.getContactos();
@@ -77,7 +77,7 @@ public class AgendaJSON {
 			if(buscarContacto(contactos,contacto.getNombre()) == null){
 				contactos.add(contacto);
 				guardarAgenda(rutaArchivo, contactos);
-				System.out.println("Contacto creado");
+				System.out.println("ContactoDup creado");
 			}
 			else
 				System.out.println("Ya existe un contacto con ese nombre");
@@ -102,7 +102,7 @@ public class AgendaJSON {
 			if(encontrado != null){
 				contactos.remove(encontrado);
 				guardarAgenda(rutaArchivo, contactos);
-				System.out.println("Contacto eliminado");
+				System.out.println("ContactoDup eliminado");
 			}
 			else
 				System.out.println("No existe ese contacto");
