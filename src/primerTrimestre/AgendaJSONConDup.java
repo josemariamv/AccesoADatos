@@ -1,12 +1,10 @@
-package ejercicios;
+package primerTrimestre;
 
 import java.io.FileReader;
 import java.io.Reader;
 import java.util.List;
 
 import com.google.gson.Gson;
-
-import primerTrimestre.Contacto;
 
 public class AgendaJSONConDup {
 	
@@ -16,6 +14,7 @@ public class AgendaJSONConDup {
 	 * La forma mas cómoda de permitir duplicados es usar listas para estos campos. Ver agenda2.json
 	 */
 	
+	// Si te fijas, es el mismo código que en la versión sin duplicados. La diferencia se trata en la clase ContactosDup
 	public static void main(String[] args) {
 		String rutaArchivo = "agenda2.json";
 		List<ContactoDup> contactos = null;

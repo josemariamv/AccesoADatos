@@ -1,12 +1,8 @@
-package ejercicios;
+package primerTrimestre;
 
 import java.util.List;
 
-/*
- * Necesitamos una segunda clase que represente los hijos del JSON Los
- * nombres de los elementos del JSON deben de coincidir con los atributos de la
- * clase de esta forma Gson los asigna de forma automática
- */
+// Ahora telefonos es una lista. Los cambios son mínimos respecto a la anterior clase
 public class ContactoDup {
 	private String nombre;
 	private List<String> telefonos;
@@ -21,10 +17,6 @@ public class ContactoDup {
 	public String getNombre() {
 		return this.nombre;
 	}
-	
-/*	public String toString() {
-		return "Nombre: " + this.nombre + "\nDNI: " + this.dni + "\nTeléfonos: " + this.telefonos + "\n"; 
-	}*/
 	
 	public String toString() {
 		String contacto = "Nombre: " + this.nombre + "\nDNI: " + this.dni + "\nTeléfonos: \n" ;
