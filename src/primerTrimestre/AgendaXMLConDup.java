@@ -10,7 +10,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-public class AgendaXMLDup {
+public class AgendaXMLConDup {
 
 	public static void main(String[] args) throws Exception{
 		String fichero = "agenda2.xml";
