@@ -10,10 +10,10 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-public class AgendaXMLConDup {
+public class AgendaXMLConAtributo {
 
 	public static void main(String[] args) throws Exception{
-		String fichero = "agenda2.xml";
+		String fichero = "agenda3.xml";
 
 		Document doc = leerXML(fichero);
 		NodeList listaContactos = doc.getElementsByTagName("contacto");
@@ -27,7 +27,8 @@ public class AgendaXMLConDup {
 			System.out.println("Teléfonos: ");
 			for (int j = 0; j < telefonos.getLength(); j++) {
 				Element telefono = (Element) telefonos.item(j);
-				System.out.println(" - " + telefono.getTextContent());
+				String tipo = telefono.getAttribute("tipo");
+				System.out.println(" - " + telefono.getTextContent() + "(" + tipo + ")");
 			}
 			System.out.println("");
 		}
