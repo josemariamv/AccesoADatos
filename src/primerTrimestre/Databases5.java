@@ -25,6 +25,10 @@ public class Databases5 {
 
 			res.updateString("nombre", "Pepe");
 			res.updateRow();
+			
+			res = sql.executeQuery("SELECT * FROM alumnos");
+			while (res.next())
+				System.out.println(res.getString("nombre") + " - " + res.getString("email"));
 
 		} catch (SQLException e) {
 			e.printStackTrace();

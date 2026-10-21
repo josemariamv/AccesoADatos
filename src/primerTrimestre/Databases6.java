@@ -25,9 +25,16 @@ public class Databases6 {
 			ResultSet res = sql.executeQuery(query);
 			res.first();
 
-			res.updateString("nombre", "Pepe");
+			res.updateString("nombre", "Juan");
 			res.updateRow();
+			
+			res = sql.executeQuery("SELECT * FROM alumnos");
+			while (res.next())
+				System.out.println(res.getString("nombre") + " - " + res.getString("email"));
+			
 			// si no ejecutamos commit los cambios en la base de datos no se guardan
+			// aunque los hayamos visto en el listado anterior
+			// pero al cerrar la base de datos se descartan y se vuelve a lo anterior
 			// conn.commit();
 
 		} catch (SQLException e) {
