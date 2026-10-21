@@ -10,10 +10,10 @@ import java.sql.Statement;
 public class Databases7 {
 
 	public static void main(String[] args) {
-		try{
-			// Ahora creamos nuestra conexión a través de la clase PoolConexiones que hemos creado
-			// Como ves, no necesitamos crear ningún objeto de este tipo para llamar al metod getConnection()
-			Connection con = PoolConexiones.getConnection();
+		// Ahora creamos nuestra conexión a través de la clase PoolConexiones que hemos creado
+		// Como ves, no necesitamos crear ningún objeto de este tipo para llamar al metod getConnection()
+		// y podemos usar try-with-resources
+		try(Connection con = PoolConexiones.getConnection()){
 			System.out.println("Conexión realizada correctamente");
 			
 			// Usaremos prepareStatement para mejorar la eficiencia
@@ -26,8 +26,7 @@ public class Databases7 {
 
 			res.updateString("nombre", "Aurora");
 			res.updateRow();
-			
-			con.close();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
