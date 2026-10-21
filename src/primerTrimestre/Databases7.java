@@ -12,6 +12,7 @@ public class Databases7 {
 	public static void main(String[] args) {
 		try{
 			// Ahora creamos nuestra conexión a través de la clase PoolConexiones que hemos creado
+			// Como ves, no necesitamos crear ningún objeto de este tipo para llamar al metod getConnection()
 			Connection con = PoolConexiones.getConnection();
 			System.out.println("Conexión realizada correctamente");
 			

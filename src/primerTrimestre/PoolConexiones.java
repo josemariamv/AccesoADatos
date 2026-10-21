@@ -18,6 +18,10 @@ public class PoolConexiones {
 	
 	private static BasicDataSource dataSource;
 	
+	// esto es un bloque de inicialización estática
+	// nos garantiza que se ejecuta solo una vez, en el momento en que Java lee la clase
+	// por primera vez y antes de crear ningún objeto de la misma, incluso
+	// es parecido a un Singleton (un patrón de diseño muy conocido) pero no exactamente...
     static {
     	// creamos el objeto y definimos la conexión
         dataSource = new BasicDataSource();
