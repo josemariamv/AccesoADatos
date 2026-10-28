@@ -1,0 +1,6 @@
+=== POKEDEX DEL PROFESOR OAK ===
+#025 Pikachu | ELECTRICO | Nivel 35
+#006 Charizard | FUEGO/VOLADOR | Nivel 50
+#007 Squirtle | AGUA | Nivel 12
+#001 Bulbasaur | PLANTA/VENENO | Nivel 18
+=== Total: 4 Pokemon ===

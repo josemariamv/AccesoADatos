@@ -8,5 +8,9 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="/home/josemaria/jars/gson-2.14.0.jar"/>
 	<classpathentry kind="lib" path="/home/josemaria/jars/mysql-connector-j-26.7.0.jar"/>
+	<classpathentry kind="lib" path="/home/josemaria/jars/commons-dbutils-1.8.1/commons-dbutils-1.8.1.jar"/>
+	<classpathentry kind="lib" path="/home/josemaria/jars/commons-dbcp2-2.14.0/commons-dbcp2-2.14.0.jar"/>
+	<classpathentry kind="lib" path="/home/josemaria/jars/commons-pool2-2.13.1/commons-pool2-2.13.1.jar"/>
+	<classpathentry kind="lib" path="/home/josemaria/jars/commons-logging-1.4.0/commons-logging-1.4.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
