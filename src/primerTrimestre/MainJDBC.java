@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-// o import java.sql.*;
+// también se puede import java.sql.*;
 
 public class MainJDBC {
 	
