@@ -1,4 +1,4 @@
-package primerTrimestre;
+package pruebas;
 
 public class Main {
 
