@@ -19,14 +19,63 @@ public class Main {
 		EntityManager em = emf.createEntityManager();
 
 		try {
-			listaEmpleadosOficina(em, "France","75017");
-			listaEmpleadosOficina2(em, "France","75017");
-			listaEmpleadosOficina3(em, "France", "75017");
+			// búsqueda única por clave primaria simple
+			encuentraLineadeProducto(em, "Motorcycles");
+			
+			// búsqueda única por clave primaria compuesta
+			//encuentraOrderDetail(em,10425,"S32_2509");
+			
+			// búsquedas múltiples por clave no primaria
+			//listaProductosdeVendedor(em, "Autoart Studio Design");
+			
+			// búsquedas únicas por clave o claves no primarias
+			// listaEmpleadosOficina(em, "France","75017");
+			//listaEmpleadosOficina2(em, "France","75017");
+			//listaEmpleadosOficina3(em, "France", "75017");
+
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
 		}
 		em.close();
 		emf.close();
+	}
+	
+	public static void encuentraLineadeProducto(EntityManager em, String linea) throws Exception {
+		Productlines elemento = em.find(Productlines.class, linea);
+		if (elemento == null)
+		    System.out.println("No existe esa Línea de Productos");
+		else {
+			System.out.println("Descripción de la línea de productos: " + linea);
+			System.out.println(elemento.getTextDescription());
+		}
+	}
+	
+	public static void encuentraOrderDetail(EntityManager em, int orden, String producto) throws Exception{
+		OrderdetailsId id = new OrderdetailsId(orden, producto);
+		Orderdetails elemento = em.find(Orderdetails.class, id);
+		if (elemento == null)
+		    System.out.println("No existe ese elemento");
+		else {
+			System.out.println("Detalle correspondiente al producto " + producto + " de la orden " + orden);
+			System.out.println("Producto: " + elemento.getProducts().getProductName());
+		    System.out.println("Cantidad: " + elemento.getQuantityOrdered());
+		    System.out.println("Precio unitario: " + elemento.getPriceEach());
+		}
+	}
+	
+	public static void listaProductosdeVendedor(EntityManager em, String vendedor) throws Exception {
+		String jpql = "FROM Products WHERE productVendor = :vendedor";
+		List<Products> listaProductos = em.createQuery(jpql, Products.class)
+				.setParameter("vendedor", vendedor)
+				.getResultList();
+		
+		if (listaProductos.isEmpty())
+			System.out.println("No existe ningún producto de ese vendedor");
+		else
+			System.out.println("Productos vendidos por: " + vendedor);
+			for (Products producto: listaProductos)
+				System.out.println(producto.getProductName());
+				
 	}
 
 	public static void listaEmpleadosOficina(EntityManager em, String pais, String codPostal) throws Exception {
@@ -80,7 +129,7 @@ public class Main {
 		// (y no puedo usar find) puedo usar el método getSingleResult()
 		Offices oficina = em.createQuery(jpql, Offices.class).setParameter("pais", pais)
 				.setParameter("codpostal", codPostal).getSingleResult();
-		// Si no existe ningún resultado provoca una excepción
+		// Si no existe ningún resultado provoca una excepción NoResultException
 		// a partir de la versión 3.2 / hibernate 7 existe otro método aún mejor que
 		// se llama getResultListOrNull() que no provoca una excepción cuando no hay
 		// resultados sino que devuelve un null.
@@ -94,4 +143,6 @@ public class Main {
 				System.out.println("   - " + emp.getFirstName() + " " + emp.getLastName());
 		}
 	}
-}
+		
+
+	}
